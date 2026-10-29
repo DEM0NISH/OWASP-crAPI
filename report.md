@@ -66,9 +66,9 @@ This assessment tested the locally hosted OWASP crAPI training application using
 | Setup | Installed Docker and started crAPI Compose stack | Services running; web app reachable |
 | Reconnaissance | Full TCP scan of loopback; OpenAPI route inventory | Seven listening ports and 43 API operations recorded |
 | Manual testing | Cross-account vehicle-location check | One BOLA finding verified |
-| Reporting/tooling | Report and BOLA checker prepared | Script requires local execution with the tester's own account passwords |
+| Reporting/tooling | Report prepared; cross-account checker run in Kali | Automated recheck returned HTTP 200 with User A's vehicle data when requested as User B |
 
 ### BOLA checker output
 
-The checker is configured to fetch User A's vehicle list, extract a vehicle UUID, then request its location using User B's token. Record its actual run output here after executing it in the Kali VM. No automated run result is claimed in this report.
+The checker fetched User A's vehicle list and requested the first vehicle's location using User B's token. Run in the Kali VM with `roll@12.com` as User A and `rock@12.com` as User B, it returned HTTP 200 and `FAIL (BOLA): User B received User A's vehicle data.` This automated result reproduces the manually verified finding. Credentials, bearer tokens, vehicle identifiers, and location coordinates are not included here.
 
